@@ -1,7 +1,6 @@
 {
   "functions": {
     "app/index.py:app": {
-      "runtime": "python3.12",
       "maxDuration": 30
     }
   },
