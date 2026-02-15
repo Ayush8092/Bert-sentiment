@@ -5,9 +5,9 @@ import torch
 
 app = FastAPI()
 
-# Load YOUR local model (from ZIP)
-model = AutoModelForSequenceClassification.from_pretrained("./my-sentiment-model")
-tokenizer = AutoTokenizer.from_pretrained("./my-sentiment-model")
+# YOUR HF MODEL (NO local files needed!)
+model = AutoModelForSequenceClassification.from_pretrained("AK47-model-ml")
+tokenizer = AutoTokenizer.from_pretrained("AK47-model-ml")
 model.eval()
 
 class PredictionRequest(BaseModel):
@@ -15,7 +15,7 @@ class PredictionRequest(BaseModel):
 
 @app.get("/")
 async def root():
-    return {"message": "BERT Sentiment API (96.5%) - Ready!"}
+    return {"message": "BERT Sentiment Pro API (96.5% F1) - LIVE!"}
 
 @app.post("/predict")
 async def predict(request: PredictionRequest):
@@ -28,3 +28,4 @@ async def predict(request: PredictionRequest):
         "sentiment": "POSITIVE" if pred == 1 else "NEGATIVE",
         "confidence": float(torch.max(probs, dim=-1)[0])
     }
+
