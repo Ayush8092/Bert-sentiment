@@ -2,10 +2,12 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 import torch
+import os
 
 app = FastAPI()
 
 # YOUR HF MODEL (NO local files needed!)
+HF_TOKEN = os.getenv("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")
 model = AutoModelForSequenceClassification.from_pretrained("AK47-model-ml")
 tokenizer = AutoTokenizer.from_pretrained("AK47-model-ml")
 model.eval()
