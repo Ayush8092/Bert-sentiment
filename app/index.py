@@ -7,7 +7,7 @@ import os
 app = FastAPI()
 
 # YOUR HF MODEL (NO local files needed!)
-HF_TOKEN = os.getenv("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")
+HF_TOKEN = os.getenv("hf_token")
 tokenizer = AutoTokenizer.from_pretrained("AK47-model-ml/Bert-Sentiment", token=HF_TOKEN)
 model = AutoModelForSequenceClassification.from_pretrained("AK47-model-ml/Bert-Sentiment", token=HF_TOKEN)
 model.eval()
